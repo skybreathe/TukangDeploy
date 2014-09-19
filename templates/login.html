@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
+
+
+<style type="text/css">
+   body { background: white; }
+   table { background: red; }
+</style>
+
+
+</head>
+
+<body>
+<form method="post" action="/logincheck/">{% csrf_token %}
+	<table width="100%" cellpadding="5">
+	<tr>
+		<td width="15%">
+			<h4>Username</h4>
+		</td>
+		<td>
+			<input type="text" name="namex">
+		</td>
+	</tr>
+	<tr>
+		<td width="15%">
+			<h4>Password</h4>
+		</td>
+		<td>
+			<input type="password" name="passwordx">
+		</td>
+	</tr>
+	<tr>
+		<td width="15%"></td>
+		<td>
+			<input type="submit" name="Submit" value="Confirm">
+		</td>
+	</tr>
+	<tr>
+	
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	</table>
+</form>
+
+</body>
+</html>

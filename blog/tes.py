@@ -1,0 +1,1 @@
+execfile('blog/execute.py')

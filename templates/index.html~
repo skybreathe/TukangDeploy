@@ -1,0 +1,144 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Deployment Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!--{%load bootstrap_toolkit%}{%bootstrap_stylesheet_tag%}-->	
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
+	<link href="{% static "css/style.css"%}" rel="stylesheet">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="{% static "js/html5shiv.js"%}"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "img/apple-touch-icon-144-precomposed.png"%}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "img/apple-touch-icon-114-precomposed.png" %}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "img/apple-touch-icon-72-precomposed.png"%}">
+  <link rel="apple-touch-icon-precomposed" href="{% static "img/apple-touch-icon-57-precomposed.png"%}">
+  <link rel="shortcut icon" href="{% static "img/favicon.png"%}">
+  
+	<script src="{% static "js/jquery.min.js"%}"></script>
+	<script src="{% static "js/bootstrap.min.js"%}"></script>
+	<script src="{% static "js/scripts.js"%}"/></script>
+</head>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-2 column">
+		<h3>Template Command </h3>
+		<!-- Button Copy -->
+			<a id="modal-76476" href="#modal-Copy" role="button" class="btn btn-default" data-toggle="modal">Copy</a>
+			<div class="modal fade" id="modal-Copy" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Copy
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group">
+									<label for="source">Source</label><input type="text" class="form-control" id="inputsource">
+								</div>
+								<div class="form-group">
+									 <label for="destination">Destination</label><input type="text" class="form-control" id="inputdestination">
+								</div>
+								<div class="form-group">
+									 <label for="exampleInputFile">File input</label><input type="file" id="InputFile">
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+				</div>	
+			</div>	
+			<!-- End Button Copy -->
+			<!-- Button New File-->
+			<a id="modal-76476" href="#modal-newfile" role="button" class="btn btn-default" data-toggle="modal">New File</a>
+			<div class="modal fade" id="modal-newfile" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								New File
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group">
+									<label for="source">File Path</label><input type="text" class="form-control" id="inputsource">
+								</div>
+								<div class="form-group">
+									 <label for="destination">File Name</label><input type="text" class="form-control" id="inputdestination">
+								</div>
+								<div class="form-group">
+									 <label for="exampleInputFile">File input</label><input type="file" id="InputFile">
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<!-- End Button New File-->
+			<!-- Button Delete -->
+			<a id="modal-76476" href="#modal-Deletedir" role="button" class="btn btn-default" data-toggle="modal">Delete</a>
+			<div class="modal fade" id="modal-Deletedir" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Delete Directory
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group">
+									<label for="source">Directory Path</label><input type="text" class="form-control" id="inputsource">
+								</div>
+								<p> Or </p>
+									 <label for="exampleInputFile">File input</label><input type="file" id="InputFile">
+							</form>
+						</div>
+						<div class="modal-footer">
+							 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Button Delete -->
+		</div>
+		<div class="col-md-10 column">
+			<div class="row">
+				<h3>Workflow </h3>
+				<div class="col-md-12 column">
+					<canvas id="myCanvas" width="900" height="300" style="border:1px solid #000000;">
+						Your browser does not support the HTML5 canvas tag.
+					</canvas>
+				</div>
+				<button type="button" class="btn btn-default">Execute</button> 
+
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

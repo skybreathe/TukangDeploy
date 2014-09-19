@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div class = "hero-unit">
+	<h1> My Blogs </h1>
+	<p>
+		<a class = "btn btn-primary btn-large">
+			learn more
+		</a>
+	</p>
+</div>
+
+{% for blog in blogs %}
+<h2>{{blog}} <small>{{blog.time}}</small></h2>
+{{blog.perex|safe}}
+<a class = "btn" href="{{blog.get_link}}">Read More</a>
+{% endfor %}
+{% endblock %}

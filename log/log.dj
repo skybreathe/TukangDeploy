@@ -1,0 +1,54 @@
+compaq upload file blog/project/b to /root/Ipan/ 09/18/14 13:08:55
+compaq upload file blog/project/b to /root/Ipan/ 09/18/14 13:08:56
+compaq upload file a to /root/Ipan/ 09/18/14 13:17:15
+compaq upload file a to /root/Ipan/ 09/18/14 13:51:34
+compaq Failed run upload file b in /root/Ipan>> Do rollback 09/18/14 13:51:34
+compaq upload file a to /root/Ipan/ 09/18/14 13:52:02
+compaq Failed run upload file b in /root/Ipan>> Do rollback 09/18/14 13:52:02
+compaq upload file a to /root/Ipan/ 09/18/14 13:54:30
+compaq upload file b to /root/Ipan/ 09/18/14 13:54:30
+compaq upload file c to /root/Ipan/ 09/18/14 13:54:30
+compaq upload file a to /root/Ipan/ 09/18/14 13:55:23
+compaq Failed run upload file d in /root/Ipan>> Do rollback 09/18/14 13:55:23
+compaq run touch newfile named as a in /root/Ipan 09/18/14 14:02:13
+compaq run touch newfile named as b in /root/Ipan 09/18/14 14:02:13
+compaq run remove file a in /root/Ipan 09/18/14 14:02:13
+compaq run touch newfile named as a in /root/Ipan 09/18/14 14:02:13
+compaq run make directory tea in /root/Ipan 09/18/14 14:02:13
+compaq Failed run copy from a in /root/Ipan/tea>> Do rollback 09/18/14 14:02:13
+compaq run make directory tea in /root/Ipan 09/18/14 14:02:58
+compaq run make directory tea in /root/Ipan 09/18/14 14:03:54
+compaq run touch newfile named as a in /root/Ipan 09/18/14 14:03:54
+compaq Failed run copy from a in /root/Ipan/tea>> Do rollback 09/18/14 14:03:54
+compaq run make directory tea in /root/Ipan 09/18/14 14:06:31
+compaq run touch newfile named as a in /root/Ipan 09/18/14 14:06:32
+compaq Failed run copy from a in /root/Ipan/tea>> Do rollback 09/18/14 14:06:32
+compaq run make directory tea in /root/Ipan 09/18/14 14:07:19
+compaq run touch newfile named as a in /root/Ipan 09/18/14 14:07:19
+compaq run copy from a to /root/Ipan/tea 09/18/14 14:07:19
+compaq run touch newfile named as a in /root/Ipan 09/18/14 16:31:03
+compaq run touch newfile named as a in /root/Ipan 09/18/14 16:46:01
+compaq run touch newfile named as b in /root/Ipan 09/18/14 16:46:01
+compaq run touch newfile named as c in /root/Ipan 09/18/14 16:46:01
+compaq run touch newfile named as a in /root/Ipan 09/18/14 16:47:10
+compaq run touch newfile named as b in /root/Ipan 09/18/14 16:47:10
+compaq run remove file a in /root/Ipan 09/18/14 16:47:37
+compaq run remove file b in /root/Ipan 09/18/14 16:47:37
+compaq Failed run remove file a in /root/Ipan>> Do rollback 09/18/14 16:47:51
+compaq Failed run remove file a in /root/Ipan>> Do rollback 09/18/14 16:50:06
+compaq Failed run remove file a in /root/Ipan>> Do rollback 09/18/14 16:50:59
+compaq Failed run remove file a in /root/Ipan>> Do rollback 09/18/14 16:57:23
+compaq run touch newfile named as a in /root/Ipan 09/18/14 17:01:10
+compaq run copy from a to /root/Ipan/tes 09/18/14 17:01:10
+compaq upload file c to /root/Ipan/tea 09/18/14 17:09:03
+compaq run touch newfile named as b in /root/Ipan 09/19/14 10:50:57
+compaq run touch newfile named as c in /root/Ipan 09/19/14 10:54:02
+compaq run touch newfile named as g in /root/Ipan 09/19/14 10:54:02
+compaq run touch newfile named as cd in /root/Ipan 09/19/14 11:07:13
+compaq do custom command: zip aoao.zip aoao 09/19/14 11:42:56
+compaq do custom command: 'cd Ipan zip tea.zip tea' 09/19/14 11:48:30
+compaq do custom command: 'ls' 09/19/14 12:21:16
+compaq do custom command: 'cd Ipan zip tea.zip tea' 09/19/14 12:44:24
+compaq do custom command: 'cd Ipan ls' 09/19/14 12:45:45
+compaq do custom command: 'cd Ipan && zip tea.zip tea' 09/19/14 12:47:52
+compaq do custom command: 'cd Ipan && zip tea.zip tea && zip tes.zip tes' 09/19/14 12:50:15

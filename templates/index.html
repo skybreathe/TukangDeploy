@@ -1,0 +1,662 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Deployment Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!--{%load bootstrap_toolkit%}{%bootstrap_stylesheet_tag%}-->	
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="{% static "js/html5shiv.js"%}"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'img/apple-touch-icon-144-precomposed.png'%}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'img/apple-touch-icon-114-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'img/apple-touch-icon-72-precomposed.png'%}">
+  <link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon-57-precomposed.png'%}">
+  <link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
+  
+</head>
+
+<body>
+
+ 
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-2 column">
+		<h3>Template Command </h3>
+		<!-- Button Copy -->
+			<a id="modal-76476" href="#modal-Copy" role="button" class="btn btn-default btn-block" data-toggle="modal">Copy</a>
+			<div class="modal fade" id="modal-Copy" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Copy
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" id="formcopy" >{% csrf_token %}
+								<div class="form-group">
+									<label for="source">Source</label><input type="text" class="form-control" id="sourcecopy" name="location">
+								</div>
+								<div class="form-group">
+									 <label for="destination">Destination</label><input type="text" class="form-control" id="destinationcopy" name="destination">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button id="buttoncopy" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>	
+			</div>	
+			<!-- End Button Copy -->
+			<!-- Button New File-->
+			<a id="modal-76476" href="#modal-newfile" role="button" class="btn btn-default btn-block" data-toggle="modal">New File</a>
+			<div class="modal fade" id="modal-newfile" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								New File
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" name="example form" id="formcreatefile">{% csrf_token %}
+								<!--<div class="form-group">
+									<label for="source">File Path</label><input type="text" class="form-control" id="inputsource">
+								</div>-->
+								<div class="form-group">
+									<label for="destination">File Name</label><input type="text" class="form-control" id="destinationnewfile" name="namafile">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  <button id="buttonnewfile" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>	
+			</div>
+			<!-- End Button New File-->
+			<!-- Button Delete -->
+			<div class="btn-group btn-block">
+				<button data-toggle="dropdown" class="btn btn-default dropdown-toggle btn-block">
+					Delete
+				<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li>
+						<a id="modal-76476" href="#modal-Deletefile" role="button" class="btn btn-default btn-block" data-toggle="modal">Delete File</a>
+					</li>
+					<li class="enabled">
+						<a id="modal-76476" href="#modal-Deletedir" role="button" class="btn btn-default btn-block" data-toggle="modal">Delete Dir</a>
+					</li>
+				</ul>
+			</div>
+<!---- modal deletefile------------------------->
+			<div class="modal fade" id="modal-Deletefile" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Delete File
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" id="formdeletefile">{% csrf_token %}
+								<div class="form-group">
+									<label for="source">Hapus file</label><input type="text" class="form-control" id="sourcedeletefile" name="namafile">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button><button id="buttondeletefile" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+<!---- modal deletedir------------------------->
+			<div class="modal fade" id="modal-Deletedir" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Delete Directory
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" id="formdeletedir">{% csrf_token %}
+								<div class="form-group">
+									<label for="source">Hapus Direktori</label><input type="text" class="form-control" id="sourcedeletedir" name="namadir">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button id="buttondeletedir" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<!-- End Button Delete -->
+		<!-- Button Create Directory-->
+			<a id="modal-76476" href="#modal-createdirectory" role="button" class="btn btn-default btn-block" data-toggle="modal">Create Directory</a>
+			<div class="modal fade" id="modal-createdirectory" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Create Directory
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" id="formmakedir" >{% csrf_token %}
+								<!--<div class="form-group">
+									<label for="source">File Path</label><input type="text" class="form-control" id="inputsource">
+								</div>-->
+								<div class="form-group">
+									 <label for="destination">Directory Name</label><input type="text" class="form-control" id="destinationmakedir" name="namadir">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button id="buttonmakedir" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>	
+			</div>
+			<!-- End Button create directory-->
+			<!--Button put file to remote-->
+			<a id="modal-76476" href="#modal-putfile" role="button" class="btn btn-default btn-block" data-toggle="modal">Put file</a>
+			<div class="modal fade" id="modal-putfile" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Put file
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" id="formputfile" >{% csrf_token %}
+								<!--<div class="form-group">
+									<label for="source">File Path</label><input type="text" class="form-control" id="inputsource">
+								</div>-->
+								<div class="form-group">
+									 <label for="source">Document name</label><input type="text" class="form-control" id="sourceputfile" name="namadokumen">
+								</div>
+								<div class="form-group">
+									 <label for="destination">Destination</label><input type="text" class="form-control" id="destinationputfile" name="destination">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button id="buttonputfile" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>	
+			</div>
+			<!--end button put file to remote-->
+			<a id="modal-76476" href="#modal-customcommand" role="button" class="btn btn-default btn-block" data-toggle="modal">Custom Command</a>
+			<div class="modal fade" id="modal-customcommand" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Custom Command
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" method="post" id="formcommand" >{% csrf_token %}
+								<!--<div class="form-group">
+									<label for="source">File Path</label><input type="text" class="form-control" id="inputsource">
+								</div>-->
+								<div class="form-group">
+									 <label for="destination">Insert Command</label><input type="text" class="form-control" id="insertcommand" name="command">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button id="buttoncustomcommand" class="btn btn-primary">Save</button>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>	
+			</div>
+			</div>
+		<!-- End all button group-->
+		<div class="col-md-10 column">
+			<div class="row">
+				<h3>Workflow </h3>
+				<div class="col-md-12 column">
+					<canvas id="myCanvas" width="900" height="300" style="border:1px solid #000000;">
+						Your browser does not support the HTML5 canvas tag.
+					</canvas>
+				</div>
+				<!--footer button-->
+				<a type="button" class="btn btn-default" id="buttonadd"><span class="glyphicon glyphicon-plus"></span> Add</a>
+				<a type="button" class="btn btn-default" href="/script/" target="_blank"><span class="glyphicon glyphicon-file"></span> View Script</a>
+				<a type="button" class="btn btn-primary" href="/execute/"><span class="glyphicon glyphicon-play"></span> Execute</a>
+				<a type="button" class="btn btn-success" href="/refresh/"><span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+				<a type="button" class="btn btn-primary" id="buttontes" onclick="draw_button('copy')">tes draw button</a>
+				<a type="button" class="btn btn-primary" id="buttonrevert">revert</a>
+				<a type="button" class="btn btn-danger" href="/logout/"><span class="glyphicon glyphicon-remove"></span> Logout</a>
+				<!--end footer button-->
+			</div>
+		</div>        
+</div>
+
+
+
+
+<footer>
+	<!--<script type='text/javascript' src="{{ STATIC_URL }}js/checkOS.js"></script>-->
+	<script type='text/javascript' src="{% static 'js/checkOS.js'%}"></script>
+	<script src="{% static 'js/jquery.min.js'%}"></script>
+	<script src="{% static 'js/bootstrap.min.js'%}"></script>
+	<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+			$("#buttoncopy").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var source = $("#sourcecopy").val();
+					var destinationcopy = $("#destinationcopy").val();
+					if (source == "" || destinationcopy == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan inputannya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/copy/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            location : source,
+							destination : destinationcopy,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formcopy')[0].reset();
+								draw_button("copy");
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+					
+            });
+			
+            $("#buttonnewfile").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var destination = $("#destinationnewfile").val();
+					if (destination == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan inputannya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/createfile/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            namafile : destination,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formcreatefile')[0].reset();
+								draw_button("newfile");
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+            });
+			
+			$("#buttondeletefile").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var source = $("#sourcedeletefile").val();
+					if (source == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan inputannya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/deletefile/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            namafile : source,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formdeletefile')[0].reset();
+								draw_button("delfile");
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+            });
+			
+			$("#buttondeletedir").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var source = $("#sourcedeletedir").val();
+					if (source == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan inputannya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/deletedir/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            namadir : source,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formdeletedir')[0].reset();
+								draw_button("deldir");
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+            });
+			
+			$("#buttonmakedir").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var source = $("#destinationmakedir").val();
+					if (source == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan inputannya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/makedir/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            namadir : source,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formmakedir')[0].reset();
+								draw_button("makedir");
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+            });
+			
+			$("#buttonputfile").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var source = $("#sourceputfile").val();
+					var location = $("#destinationputfile").val();
+					if (source == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan inputannya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/putfile/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            namadokumen : source,
+							destination : location,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formputfile')[0].reset();
+								draw_button("putfile");
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+            });	
+			$("#buttonadd").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+                    $.ajax({
+                        url : "/add/", 
+                            success : function(json) {
+								alert("add sukses");
+								draw_id();
+							},
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+                    return false;
+            });
+			$("#buttonrevert").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+                    $.ajax({
+                        url : "/dorevert/", 
+                            success : function(json) {
+								alert("project berhasil di revert");
+							},
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+                    return false;
+            });				
+			$("#buttontes").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+                    $.ajax({
+                            success : function(json) {
+								alert(OSName);
+							},
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+                    return false;
+            });	
+			$("#buttoncustomcommand").click(function() {
+                    <!--var input_string = $("#forminput").val();-->
+					var command = $("#insertcommand").val();
+					if (command == "") {
+					$.ajax({
+					success : function(json) {
+								alert("masukkan commandnya!!");
+							},
+					});
+					}
+					else{
+                    $.ajax({
+                        url : "/customcommand/", 
+                        type : "POST",
+                        dataType: "text", 
+                        data : {
+                            perintahnya : command,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+								$('#formcommand')[0].reset();
+								draw_button();
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+					}
+                    return false;
+            });	
+        });
+ </script>
+ <script>
+	var id_img = 1;
+	var posX_img = 30;
+	var posY_img = 10;
+	var c=document.getElementById("myCanvas");
+	var ctx=c.getContext("2d");
+	ctx.font = 'bold 15px Times New Romam';
+	var id_no = 1;
+	var posX_no = 10;
+	var posY_no = 35;
+	ctx.fillText(id_no, posX_no , posY_no);
+ 
+function draw_button(type){
+var imageObj = new Image();
+if (type == "copy"){
+imageObj.src = "{% static 'img/copy.jpg' %}";
+}
+else if (type == "newfile") {
+imageObj.src = "{% static 'img/newfile.jpg' %}";
+}
+else if (type == "deldir") {
+imageObj.src = "{% static 'img/deldir.jpg' %}";
+}
+else if (type == "delfile") {
+imageObj.src = "{% static 'img/delfile.jpg' %}";
+}
+else if (type == "makedir"){
+imageObj.src = "{% static 'img/createdirpng.png' %}";
+}
+else if (type == "putfile"){
+imageObj.src = "{% static 'img/putfilebtn.png' %}";
+}
+else {
+imageObj.src = "{% static 'img/favicon.png' %}";
+}
+imageObj.onload = function(){
+ctx.drawImage(imageObj, posX_img,posY_img,80,70 );
+};
+		//posX_img = posX_img + 10;
+id_img = id_img+1;
+if (id_img == id_no){
+		
+	if(id_img%4 == 1 && id_img!= 1){
+		posY_img = 10;
+		posX_img = posX_img + 100;
+	}
+	else{
+		posY_img = posY_img + 75;
+	}
+	ctx.drawImage(imageObj, posX_img,posY_img,80,70 );
+}
+else {
+	id_img = id_no;
+	}
+}
+
+function draw_id(){
+	ctx.font = 'bold 15px Times New Roman';
+	//posX_no = posX_no + 10;
+	id_no = id_no+1;
+	if(id_no%4 == 1 && id_no!=1) {
+	posY_no = 35;
+	posX_no = posX_no + 100;
+	}
+	else {
+	posY_no = posY_no + 75;
+	}
+	ctx.fillText(id_no, posX_no , posY_no);
+}
+/*
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+//ctx.fillRect(20,20,20,20);
+ctx.drawImage(imageObj, 10,20,80,70 );
+var canvasOffset=$("#myCanvas").offset();
+var offsetX=canvasOffset.left;
+var offsetY=canvasOffset.top;
+var canvasWidth=c.width;
+var canvasHeight=c.height;
+var isDragging=false;
+	function handleMouseDown(e){
+	  canMouseX=parseInt(e.clientX-offsetX);
+	  canMouseY=parseInt(e.clientY-offsetY);
+	  // set the drag flag
+	  isDragging=true;
+	  
+	}
+
+	function handleMouseUp(e){
+	  canMouseX=parseInt(e.clientX-offsetX);
+	  canMouseY=parseInt(e.clientY-offsetY);
+	  // clear the drag flag
+	  isDragging=false;
+	}
+
+	function handleMouseOut(e){
+	  canMouseX=parseInt(e.clientX-offsetX);
+	  canMouseY=parseInt(e.clientY-offsetY);
+	  // user has left the canvas, so clear the drag flag
+	  //isDragging=false;
+	}
+
+	function handleMouseMove(e){
+	  canMouseX=parseInt(e.clientX-offsetX);
+	  canMouseY=parseInt(e.clientY-offsetY);
+	  // if the drag flag is set, clear the canvas and draw the image
+	  if(isDragging){
+		  ctx.clearRect(0,0,canvasWidth,canvasHeight);
+		  ctx.drawImage(imageObj,canMouseX-128/2,canMouseY-120/2,80,70);
+	  }
+	}
+
+	$("#myCanvas").mousedown(function(e){handleMouseDown(e);});
+	$("#myCanvas").mousemove(function(e){handleMouseMove(e);});
+	$("#myCanvas").mouseup(function(e){handleMouseUp(e);});
+	$("#myCanvas").mouseout(function(e){handleMouseOut(e);});
+*/
+
+</script>
+</footer>
+</body>
+</html>

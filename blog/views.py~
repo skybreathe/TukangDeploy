@@ -1,0 +1,10 @@
+#from django.shortcuts import render
+from django.template.response import TemplateResponse
+from django.shortcuts import get_object_or_404
+from blog.models import Blog
+# Create your views here.
+def home(request):
+	return TemplateResponse(request, "home.html",{'blogs' : Blog.objects.all()})
+def blog(request, slug):
+	blog = get_object_or_404(Blog, slug=slug)
+	return TemplateResponse(request,"blog.html",{'blog' : blog})
